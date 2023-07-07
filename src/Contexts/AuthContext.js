@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const handleLogout = () => {
-    // Perform logout actions, e.g., clearing session data or token
     localStorage.removeItem("token");
     setIsLoggedIn(false);
   };

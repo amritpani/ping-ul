@@ -124,7 +124,6 @@ const ChatUiPage = () => {
         </Grid>
       </Grid>
       <Box mt={3}>
-        {/* Input section */}
         <TextField
           label="Message"
           variant="outlined"
