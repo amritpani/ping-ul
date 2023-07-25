@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://ping-ul-backend.loca.lt/api";
+const API_BASE_URL = "https://ping-ul-amrit-backend.loca.lt/api";
 
 export const getUser = async (token) => {
   try {
