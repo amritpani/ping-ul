@@ -59,8 +59,8 @@ const MainChat = ({ selectedChat }) => {
                     display: "flex",
                     justifyContent:
                       message.sender_id === loggedInUserId
-                        ? "flex-start"
-                        : "flex-end",
+                        ? "flex-end"
+                        : "flex-start",
                     marginBottom: "5px",
                   }}
                 >

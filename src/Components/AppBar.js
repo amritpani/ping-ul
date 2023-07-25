@@ -42,7 +42,7 @@ const AppBarComponent = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-          PING UL
+          Ping-UL
         </Typography>
         <IconButton
           size="large"
