@@ -1,13 +1,22 @@
 import axios from "axios";
 
 const API_BASE_URL = "https://ping-ul-backend.loca.lt/api";
+const access_token = localStorage.getItem("token");
 
-export const createMessage = async (conversationGroupId, text) => {
+export const sendMessage = async (conversationGroupId, text) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/messages`, {
-      conversation_group_id: conversationGroupId,
-      text,
-    });
+    const response = await axios.post(
+      `${API_BASE_URL}/messages`,
+      {
+        conversation_group_id: conversationGroupId,
+        text,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
+    );
 
     return response.data;
   } catch (error) {
@@ -20,7 +29,12 @@ export const createMessage = async (conversationGroupId, text) => {
 export const getMessages = async (conversationGroupId) => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}/messages/${conversationGroupId}`
+      `${API_BASE_URL}/messages/${conversationGroupId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     );
 
     return response.data;

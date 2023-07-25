@@ -1,7 +1,8 @@
+//ConversationService.js
 import axios from "axios";
 
 const API_BASE_URL = "https://ping-ul-backend.loca.lt/api";
-
+const access_token = localStorage.getItem("token");
 export const createConversation = async (type, users) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/conversations`, {
@@ -19,8 +20,11 @@ export const createConversation = async (type, users) => {
 
 export const getConversations = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/conversations`);
-
+    const response = await axios.get(`${API_BASE_URL}/conversations`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.log("Get conversations failed:", error);

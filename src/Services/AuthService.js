@@ -9,7 +9,7 @@ export const signIn = async (email, password) => {
       email,
       password,
     });
-    const token = response.data.token;
+    const token = response.data;
     return token;
   } catch (error) {
     throw new Error("Signin failed");
@@ -40,10 +40,16 @@ export const signUp = async (name, gender, email, password, contactNumber) => {
 
 export const validateToken = async (token) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/validateToken`, {
-      token,
-    });
-    return response.data.isValid;
+    const response = await axios.get(
+      `${API_BASE_URL}/auth/validateToken`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
   } catch (error) {
     throw new Error("Token validation failed");
   }

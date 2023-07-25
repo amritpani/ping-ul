@@ -1,10 +1,15 @@
+//UserContactsService.js
 import axios from "axios";
 
 const API_BASE_URL = "https://ping-ul-backend.loca.lt/api";
-
+const access_token = localStorage.getItem("token");
 export const getContacts = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/contacts`);
+    const response = await axios.get(`${API_BASE_URL}/contacts`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
